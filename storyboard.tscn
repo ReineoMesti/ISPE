@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c7ynyp80arl4e"]
+
+[ext_resource type="Script" uid="uid://cnqehquhxn67l" path="res://overworld.gd" id="2_36rgb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_eja50"]
+
+[sub_resource type="Environment" id="Environment_eja50"]
+background_mode = 2
+background_energy_multiplier = 5.0
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_mexpn"]
+
+[node name="overworld" type="Node3D" unique_id=208067932]
+script = ExtResource("2_36rgb")
+
+[node name="CenterSphere" type="MeshInstance3D" parent="." unique_id=1335591216]
+mesh = SubResource("SphereMesh_eja50")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1623716827]
+transform = Transform3D(0.9989648, 0.004952714, 0.04522259, -0.0067750653, 0.99916744, 0.040233154, -0.04498568, -0.04049788, 0.99816644, -0.10738444, -0.20151877, 3.330105)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1068374740]
+environment = SubResource("Environment_eja50")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1033022316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 2)
+light_energy = 2.0
+omni_range = 300.0
+omni_attenuation = 0.0
+
+[node name="orbitInstance" type="MeshInstance3D" parent="." unique_id=244384708]
+mesh = SubResource("ImmediateMesh_mexpn")

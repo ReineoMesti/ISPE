@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dv8yavvudv5qy"]
+
+[ext_resource type="Script" uid="uid://cce3fwh81koyq" path="res://menu_page.gd" id="1_lti8b"]
+
+[node name="MenuPage" type="Control" unique_id=88226513]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="PageContent" type="MarginContainer" parent="." unique_id=2119540784]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel" type="VBoxContainer" parent="PageContent" unique_id=1184541313]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(120, -1)
+propagate_maximum_size = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Entry" type="Button" parent="PageContent/Panel" unique_id=1789126243]
+layout_mode = 2
+text = "game"
+
+[node name="Exit" type="Button" parent="PageContent/Panel" unique_id=2021672606]
+layout_mode = 2
+text = "exit"
