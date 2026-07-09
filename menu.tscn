@@ -12,19 +12,22 @@ grow_vertical = 2
 script = ExtResource("1_lti8b")
 
 [node name="PageContent" type="MarginContainer" parent="." unique_id=2119540784]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="Panel" type="VBoxContainer" parent="PageContent" unique_id=1184541313]
-custom_minimum_size = Vector2(200, 0)
-custom_maximum_size = Vector2(120, -1)
 propagate_maximum_size = false
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme_override_constants/separation = 8
 
 [node name="Entry" type="Button" parent="PageContent/Panel" unique_id=1789126243]

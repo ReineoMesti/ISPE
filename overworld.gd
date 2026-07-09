@@ -4,8 +4,9 @@ extends Node3D
 @onready var camera: Camera3D = $Camera
 var ellipse: orbitEllipse
 var curve: orbitCurve
-var orbitNode: MeshInstance3D # = $orbitInstance
+var orbitNode: MeshInstance3D 
 var material:StandardMaterial3D
+
 func _ready() -> void:
 	camera.global_position = Vector3(6, 4, 0)
 	camera.look_at(Vector3(0,0,0))
@@ -21,9 +22,12 @@ func _ready() -> void:
 	orbitNode.material_overlay = material
 	add_child(orbitNode)
 	orbitNode.global_position = Vector3.ZERO
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @onready var angle = 0
+
 func _process(delta: float) -> void:
 	angle += delta / 3
 	camera.global_position = Vector3(6,0,0)*cos(angle)+Vector3(0,0,6)*sin(angle)+Vector3(0,4,0)

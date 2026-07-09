@@ -8,8 +8,6 @@
 background_mode = 2
 background_energy_multiplier = 5.0
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_mexpn"]
-
 [node name="overworld" type="Node3D" unique_id=208067932]
 script = ExtResource("2_36rgb")
 
@@ -23,10 +21,32 @@ transform = Transform3D(0.9989648, 0.004952714, 0.04522259, -0.0067750653, 0.999
 environment = SubResource("Environment_eja50")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1033022316]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.783211, 3.3260362, 2.328283)
 light_energy = 2.0
 omni_range = 300.0
 omni_attenuation = 0.0
 
-[node name="orbitInstance" type="MeshInstance3D" parent="." unique_id=244384708]
-mesh = SubResource("ImmediateMesh_mexpn")
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=883064493]
+layer = 4
+
+[node name="UIContainer" type="Control" parent="UILayer" unique_id=2028744378]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="UILayer/UIContainer" unique_id=110962367]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UIContainer" unique_id=1171345064]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.08
