@@ -1,0 +1,14 @@
+本文件介绍程序的结构，以便阅读和修改
+
+关于太空载具，目前方案如下：
+
+太空载具的模板(json文件) -> vehicleTemplateLoader类 -> vehicleControl类
+
+vehicleControl类：
+----vehicle类
+--------vehicleData字典 - 存放vehicle的各个属性
+--------vehicleParameter字典 - 存放vehicle的各个功能调用时需要的参数，传递给executor
+--------executor函数 - 以vehicleParameter生成的参数对vehicleData进行修改或者调用外部函数(GeneralFunction)
+----vehicleUI类 - 盛放各个控制本对象的ui的实例，它们手动地挂载到指定的Node下
+
+GeneralFunction文件存放了一些外部的功能比如释放新的轨道物体(发射导弹和炮弹)
