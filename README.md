@@ -12,6 +12,8 @@ Please contribute by creating pull request. 请通过创建PR来贡献内容。
 
 - LICENSE - GPLv3 许可证
 
+- progamStructure.txt - 技术性的注释
+
 #### Single files | 独立文件
 
 - menu.tscn - 开始菜单的场景文件
