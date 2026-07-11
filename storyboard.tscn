@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7ynyp80arl4e"]
 
 [ext_resource type="Script" uid="uid://cnqehquhxn67l" path="res://overworld.gd" id="2_36rgb"]
+[ext_resource type="Script" uid="uid://0ma0q8yfy0i" path="res://UIClassFiles/mouseRay.gd" id="2_p1o8h"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_eja50"]
 
@@ -10,6 +11,9 @@ background_energy_multiplier = 5.0
 
 [node name="overworld" type="Node3D" unique_id=208067932]
 script = ExtResource("2_36rgb")
+
+[node name="MouseRay" type="RayCast3D" parent="." unique_id=1247304511]
+script = ExtResource("2_p1o8h")
 
 [node name="CenterSphere" type="MeshInstance3D" parent="." unique_id=1335591216]
 mesh = SubResource("SphereMesh_eja50")
