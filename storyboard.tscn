@@ -21,9 +21,9 @@ transform = Transform3D(0.9989648, 0.004952714, 0.04522259, -0.0067750653, 0.999
 environment = SubResource("Environment_eja50")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1033022316]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.783211, 3.3260362, 2.328283)
+transform = Transform3D(1, 0, 0, 0, -0.7407923, 0.67173415, 0, -0.67173415, -0.7407923, 5.783211, 3.3260362, 2.328283)
 light_energy = 2.0
-omni_range = 300.0
+omni_range = 400.0
 omni_attenuation = 0.0
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=883064493]

@@ -12,6 +12,6 @@ var vehicleFunctionParameters: Dictionary
 func _init() -> void:
 	pass # 可能后续会改动
 	
-## 函数绑定至UI的信号系统
+## 本函数绑定至UI的信号系统
 func executor(id: int) -> void:
 	pass

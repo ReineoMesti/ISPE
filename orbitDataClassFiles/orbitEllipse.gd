@@ -14,12 +14,12 @@ func _init(normal:Vector3, focus:Vector3, periapsis:Vector3, apoapsis:Vector3) -
 	apoapsisVector = apoapsis
 	semiMajorAxis = (periapsis.length() + apoapsis.length()) / 2.0
 	semiMinorAxis = sqrt(periapsis.length() * apoapsis.length())
-	eccentricity = (periapsis.length()-apoapsis.length())/(periapsis.length()+apoapsis.length())
-	centerVector = periapsis + apoapsis / 2.0
+	eccentricity = (periapsis + apoapsis).length()/(periapsis.length()+apoapsis.length())
+	centerVector = (periapsis + apoapsis) / 2.0
 	
 func focusRadius(angle_rad:float) -> Vector3:
 	var num = semiMajorAxis * (1 - eccentricity*eccentricity)
-	var den = 1 - eccentricity * cos(angle_rad)
+	var den = 1 + eccentricity * cos(angle_rad)
 	var len_ = num / den
 	var unitVectorX = periapsisVector / periapsisVector.length()
 	var unitVectorZ = normalVector
@@ -32,6 +32,8 @@ func centerRadius(angle_rad:float) -> Vector3:
 	var unitVectorY = unitVectorZ.cross(unitVectorX)
 	var answerVector = unitVectorX * semiMajorAxis * cos(angle_rad)
 	answerVector += unitVectorY * semiMinorAxis * sin(angle_rad)
+	if angle_rad == 0:
+		print(answerVector)
 	return answerVector
 func focusPosition(angle_rad:float) -> Vector3:
 	return focusRadius(angle_rad) + majorFocus
