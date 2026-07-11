@@ -3,7 +3,7 @@ class_name orbitDisplay extends RefCounted
 var meshResource: ImmediateMesh
 var nodeInstance: MeshInstance3D
 
-func _init(orbit:Callable, begin:float, end:float, stepCount:int, enclosed:bool) -> void:
+func _init(parent:Node3D, orbit:Callable, begin:float, end:float, stepCount:int, enclosed:bool) -> void:
 	meshResource = ImmediateMesh.new()
 	meshResource.clear_surfaces()
 	meshResource.surface_set_color(Color.BLUE)
@@ -20,3 +20,5 @@ func _init(orbit:Callable, begin:float, end:float, stepCount:int, enclosed:bool)
 	meshResource.surface_end()
 	nodeInstance = MeshInstance3D.new()
 	nodeInstance.mesh = meshResource
+	if parent != null:
+		parent.add_child(nodeInstance)
