@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cnqehquhxn67l" path="res://overworld.gd" id="2_36rgb"]
 [ext_resource type="Script" uid="uid://0ma0q8yfy0i" path="res://UIClassFiles/mouseRay.gd" id="2_p1o8h"]
-[ext_resource type="Script" uid="uid://cqvevr5n2lhxc" path="res://UIClassFiles/UILayer.gd" id="3_36rgb"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_eja50"]
 
@@ -33,7 +32,6 @@ omni_attenuation = 0.0
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=883064493]
 layer = 4
-script = ExtResource("3_36rgb")
 
 [node name="UIContainer" type="Control" parent="UILayer" unique_id=2028744378]
 layout_mode = 3
