@@ -2,6 +2,8 @@ class_name collisionAreaOfSign extends Area3D
 
 signal touchedByMouse
 signal touchExitedByMouse
+signal clickedByMouse
+signal clickExitedByMouse
 var collisionModel: CollisionShape3D
 var radius: float
 
