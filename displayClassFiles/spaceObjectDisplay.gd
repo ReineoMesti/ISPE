@@ -7,7 +7,7 @@ static var onTouchFontColor = Color.GREEN_YELLOW
 ## 用于标称名字的标签实例
 var labelInstance: Label3D
 ## 用于设置文本悬停高度的向量，一般需要是Vector3.UP正向的
-var positionOffsetVector: Vector3
+var positionOffsetVector: Vector2
 
 ## 标称符号的半径取值
 const signRadius = 0.1
@@ -16,11 +16,8 @@ const signRadius = 0.1
 var signInstance: MeshInstance3D
 ## 标称符号的物理区域
 var signArea: Area3D
-## 标称符号的物理碰撞体
-var signCollision: CollisionShape3D
-## 发生点击的信号
-signal onClick
-
+## 轨道显示
+var orbitDisplayInstance: orbitDisplay
 
 const NORMAL_STATUS = 0
 const ONTOUCH_STATUS = 1
@@ -30,29 +27,27 @@ const ONCLICK_STATUS = 2
 var status: int
 
 
-func _init(tag: String, parent: Node = null, offset:Vector3 = Vector3.ZERO) -> void:
+func _init(tag: String, displayedOrbit: orbitDisplay, parent: Node = null, offset:Vector2 = Vector2.ZERO) -> void:
 	labelInstance = Label3D.new()
 	labelInstance.text = tag
 	labelInstance.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	
 	positionOffsetVector = offset
+	labelInstance.offset = positionOffsetVector
 	signInstance = MeshInstance3D.new()
 	var sphereMeshInstance = SphereMesh.new()
 	sphereMeshInstance.radius = signRadius
 	sphereMeshInstance.height = signRadius * 2
 	signInstance.mesh = sphereMeshInstance
-	
-	signArea = Area3D.new()
-	signCollision = CollisionShape3D.new()
-	signCollision.shape = SphereShape3D.new()
-	signCollision.shape.radius = signRadius
-	signArea.add_child(signCollision)
+	orbitDisplayInstance = displayedOrbit
+	signArea = collisionAreaOfSign.new(signRadius)
 	signInstance.add_child(signArea)
 	status = NORMAL_STATUS
-	appearanceNormal()
+	
 	signArea.collision_layer = 1
-	signArea.body_entered.connect(collisionProcessor)
-	signArea.body_exited.connect(collisionRecoverProcessor)
+	signArea.touchedByMouse.connect(collisionProcessor)
+	signArea.touchExitedByMouse.connect(collisionRecoverProcessor)
+	appearanceNormal()
 	if parent != null:
 		mount(parent)
 	
@@ -61,28 +56,34 @@ func _init(tag: String, parent: Node = null, offset:Vector3 = Vector3.ZERO) -> v
 func mount(parent: Node) -> void:
 	parent.add_child(labelInstance)
 	parent.add_child(signInstance)
+	parent.add_child(orbitDisplayInstance.nodeInstance)
+	orbitDisplayInstance.nodeInstance.hide()
 	
 ## 指定位置
 func moveTo(position_: Vector3) -> void:
 	signInstance.position = position_
-	labelInstance.position = position_ + positionOffsetVector
+	labelInstance.position = position_
 
-func collisionProcessor():
-	appearanceOnTouch()
-func collisionRecoverProcessor():
-	appearanceNormal()
+func collisionProcessor(signalType: int):
+	if signalType == ONTOUCH_STATUS:
+		appearanceOnTouch()
+	elif signalType == ONCLICK_STATUS:
+		appearanceOnClick()
+func collisionRecoverProcessor(signalType: int):
+	if status == signalType:
+		appearanceNormal()
 
 func appearanceOnTouch() -> void:
+	orbitDisplayInstance.nodeInstance.show()
 	status = ONTOUCH_STATUS
 	labelInstance.modulate = onTouchFontColor
-	#labelInstance.font_size += 4
 
 func appearanceOnClick() -> void:
 	status = ONCLICK_STATUS
 	labelInstance.modulate = onClickFontColor
 	
 func appearanceNormal() -> void:
+	orbitDisplayInstance.nodeInstance.hide()
 	labelInstance.modulate = normalFontColor
-	#labelInstance.font_size -= 4
 	status = NORMAL_STATUS
 	

@@ -1,7 +1,7 @@
 extends RayCast3D
 
 var camera: Camera3D
-var onCollidingObject: Area3D
+var onCollidingObject: collisionAreaOfSign
 
 func _ready() -> void:
 	camera = get_parent().get_node("Camera")
@@ -21,16 +21,17 @@ func _process(delta):
 	force_raycast_update()
 	if is_colliding():
 		var collidingObject = get_collider()
-		if collidingObject is Area3D:
+		if collidingObject is collisionAreaOfSign:
 			if collidingObject != onCollidingObject:
-				collidingObject.body_entered.emit()
+				collidingObject.touchedByMouse.emit(spaceObjectDisplay.ONTOUCH_STATUS)
 				if onCollidingObject != null:
-					onCollidingObject.body_exited.emit()
+					onCollidingObject.touchExitedByMouse.emit(spaceObjectDisplay.ONTOUCH_STATUS)
+			onCollidingObject = collidingObject
 		else:
 			if onCollidingObject:
-				onCollidingObject.body_exited.emit()
-		onCollidingObject = collidingObject
+				onCollidingObject.touchExitedByMouse.emit(spaceObjectDisplay.ONTOUCH_STATUS)
+			onCollidingObject = null
 	else:
 		if onCollidingObject:
-			onCollidingObject.body_exited.emit()
+			onCollidingObject.touchExitedByMouse.emit(spaceObjectDisplay.ONTOUCH_STATUS)
 			onCollidingObject = null
