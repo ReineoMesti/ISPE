@@ -91,6 +91,7 @@ func moveTo(position_: Vector3) -> void:
 	if infoWindow and is_instance_valid(infoWindow):
 		# ! 没有clamp
 		infoWindow.position = cameraInstance.unproject_position(signInstance.global_position)
+		# ! 该值取决于Margin
 		infoWindow.position += Vector2i(10,10)
 	
 

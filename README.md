@@ -29,3 +29,15 @@ Please contribute by creating pull request. 请通过创建PR来贡献内容。
 - orbitArgumentClassFiles - 存放轨道的内部参数的类的目录
 
 - orbitDisplayClassFiles - 存放轨道的显示类的目录
+
+- dataManagementClasses - 存放读取载具模板数据的目录
+
+- calculateClassFiles - 存放轨道计算有关的函数的目录
+
+- displayClassFiles - 存放各类显示类的目录
+
+- spaceObjectClassFiles - 存放集中载具数据的类的目录
+
+- UIClassFiles - 存放UI界面有关类的目录
+
+- vehicleDataClassFiles - 存放载具数据和载具模板的类的目录
