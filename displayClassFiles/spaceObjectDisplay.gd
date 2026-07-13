@@ -106,6 +106,7 @@ func collisionRecoverProcessor(signalType: int):
 
 ## 切换至受到鼠标悬停的状态
 func appearanceOnTouch() -> void:
+	orbitDisplayInstance.reassignColor(Color.GREEN_YELLOW)
 	orbitDisplayInstance.nodeInstance.show()
 	status = ONTOUCH_STATUS
 	labelInstance.modulate = onTouchFontColor
@@ -113,6 +114,7 @@ func appearanceOnTouch() -> void:
 ## 切换至受到鼠标点击而选中的状态
 func appearanceOnClick() -> void:
 	appearanceNormal()
+	orbitDisplayInstance.reassignColor(Color.GREEN)
 	orbitDisplayInstance.nodeInstance.show()
 	status = ONCLICK_STATUS
 	labelInstance.modulate = onClickFontColor
@@ -123,6 +125,7 @@ func appearanceOnClick() -> void:
 ## 切换至正常状态
 func appearanceNormal() -> void:
 	orbitDisplayInstance.nodeInstance.hide()
+	orbitDisplayInstance.reassignColor(Color.GREEN_YELLOW)
 	labelInstance.modulate = normalFontColor
 	labelInstance.font_size = normalFontSize
 	status = NORMAL_STATUS

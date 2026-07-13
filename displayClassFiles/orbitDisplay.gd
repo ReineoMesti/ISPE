@@ -34,3 +34,7 @@ func _init(parent:Node3D, orbit:Callable,
 	
 	if parent != null:
 		parent.add_child(nodeInstance)
+
+## 重新指定轨迹颜色
+func reassignColor(newColor: Color):
+	material.albedo_color = newColor
