@@ -19,7 +19,8 @@ func _ready() -> void:
 @onready var angle = 0
 @onready var flag = true
 func _process(delta: float) -> void:
-	time += delta * 4
+	time += delta / 4
+	angle += delta / 16
 	camera.global_position = Vector3(4,0,0)*cos(angle)+Vector3(0,0,4)*sin(angle)+Vector3(0,3,0)
 	camera.look_at(Vector3(0,0,0))
 	ship.flush(time)
