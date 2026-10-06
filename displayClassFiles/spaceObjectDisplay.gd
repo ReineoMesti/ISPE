@@ -94,12 +94,13 @@ func moveTo(position_: Vector3) -> void:
 		# ! 该值取决于Margin
 		infoWindow.position += Vector2i(10,10)
 	
-
+## 对鼠标事件(鼠标点击和悬停)的响应函数
 func collisionProcessor(signalType: int):
 	if signalType == ONTOUCH_STATUS:
 		appearanceOnTouch()
 	elif signalType == ONCLICK_STATUS:
 		appearanceOnClick()
+## 对鼠标事件(鼠标离开悬停和点击别处)的响应函数
 func collisionRecoverProcessor(signalType: int):
 	if status == signalType:
 		appearanceNormal()
