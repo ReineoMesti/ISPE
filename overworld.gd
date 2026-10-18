@@ -7,7 +7,6 @@ var ellipse: orbitEllipse
 var ship: spaceObjectControl
 
 func _ready() -> void:
-	
 	camera.global_position = Vector3(6, 4, 0)
 	camera.look_at(Vector3(0,0,0))
 	center.global_position = Vector3(0,0,0)
